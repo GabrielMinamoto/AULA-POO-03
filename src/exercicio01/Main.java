@@ -1,5 +1,6 @@
 package exercicio01;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -8,6 +9,7 @@ public class Main {
         Scanner e = new Scanner(System.in);
         Random r = new Random();
         contaBanco c = new contaBanco();
+        DecimalFormat fMoeda = new DecimalFormat("#,##0.00");
         double valor;
 
         System.out.print("Nome do correntista ---> ");
@@ -22,7 +24,7 @@ public class Main {
         valor = e.nextDouble();
         c.deposito(valor);
 
-        System.out.println(("Seu saldo atual --->") + c.saldo);
+        System.out.println(("Seu saldo atual --->") + fMoeda.format(c.saldo));
 
         System.out.println(("Digite o valor de saque --> "));
         valor = e.nextDouble();
