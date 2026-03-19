@@ -10,16 +10,17 @@ public class BilheteUnico {
 
     public BilheteUnico(Usuario usuario) {
         Random random = new Random();
-        this.saldo = 1;
+        this.saldo = 0;
         this.numero = random.nextInt(1000, 9999);
         this.usuario = usuario;
     }
 
-    public void carregar(double valor) {
+    public double carregar(double valor) {
         if(valor <= 0) {
-            return;
+            return valor;
         }
         saldo += valor;
+        return valor;
     }
 
     public double calcularTarifa(){

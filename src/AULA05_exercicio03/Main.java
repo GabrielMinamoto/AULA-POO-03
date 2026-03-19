@@ -1,5 +1,6 @@
 package AULA05_exercicio03;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Main {
@@ -25,7 +26,7 @@ public class Main {
                     cadastrarBilhete();
                     break;
                 case 2:
-//                    carregarBilhete();
+                    carregarBilhete();
                     break;
                 case 3:
                     consultarBilhete();
@@ -40,26 +41,43 @@ public class Main {
                     System.out.println("Escolha uma opção válida: ");
                     opcao=e.nextInt();
             }
+            System.out.println("\n ----------------------------");
         }while (opcao != 5);
 
     }
 
     private static void passarCatraca() {
+        BilheteUnico b = pesquisa();
+        if (b != null){
+            if (b.passarNaCatraca() == false){
+                System.out.println("Saldo Insuficiente!");
+            }
+            System.out.println("Saldo atual R$ " + b.saldo);
+        }
 
     }
 
     private static void consultarBilhete() {
-        System.out.println("Seu saldo é de: " + bilhete[index].saldo);
+        DecimalFormat fMoeda = new DecimalFormat("#, ## R$ 0.00");
+        BilheteUnico b = pesquisa();
+        if (b != null){
+            System.out.println("Seu saldo é de: " + fMoeda.format(b.saldo));
+        }
     }
 
-//    private static double carregarBilhete() {
-//        double valor;
-//        System.out.println("Digite o valor para carregar o bilhete: ");
-//        valor = e.nextDouble();
-//        bilhete[index].carregar(valor);
-//
-//        return ;
-//    }
+    private static void carregarBilhete() {
+        double valor;
+        BilheteUnico b = pesquisa();
+        if (b != null){
+            System.out.println("Digite o valor para carregar o bilhete: ");
+            valor = e.nextDouble();
+            b.carregar(valor);
+
+            System.out.println("Seu bilhete foi carregado!");
+        }else {
+            System.out.println("Bilhete não cadastrado! Utilize a opção 1!");
+        }
+    }
 
     public static void cadastrarBilhete(){
         String nome;
@@ -80,7 +98,8 @@ public class Main {
         }
     }
 
-    public BilheteUnico pesquisa(){
+//    sem o static ele pensa que o metodo faz parte de um objeto
+    public static BilheteUnico pesquisa(){
         long cpf;
         System.out.println("Qual o CPF para pesquisa? ");
         cpf = e.nextLong();
