@@ -10,7 +10,7 @@ public class BilheteUnico {
 
     public BilheteUnico(Usuario usuario) {
         Random random = new Random();
-        this.saldo = 0;
+        this.saldo = 1;
         this.numero = random.nextInt(1000, 9999);
         this.usuario = usuario;
     }
