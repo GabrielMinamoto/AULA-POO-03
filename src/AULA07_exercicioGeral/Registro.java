@@ -4,12 +4,15 @@ import java.time.Duration;
 import java.time.LocalTime;
 
 public class Registro {
+    Veiculo veiculo;
     String inicioStr;
     String fimStr;
 
-    public Registro(String inicioStr, String fimStr) {
+    public Registro(Veiculo veiculo, String inicioStr) {
+        this.veiculo = veiculo;
         this.inicioStr = inicioStr;
-        this.fimStr = fimStr;
+
+
     }
     public long calcularValor(){
         LocalTime inicio = LocalTime.parse(inicioStr);
