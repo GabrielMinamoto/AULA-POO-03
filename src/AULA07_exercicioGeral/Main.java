@@ -63,12 +63,12 @@ public class Main {
             modelo = sc.next();
             Proprietario proprietario = new Proprietario(nome, cpf);
             veiculos[indexVeiculos++] = new Veiculo(marca, modelo, placa, proprietario);
-        }else {
-            System.out.println("Hora de entrada (hh:mm) -->");
-            horaEntrada = sc.next();
-            registro[indexRegistro] = new Registro(veiculoEntrado, horaEntrada);
-            indexRegistro++;
         }
+        System.out.println("Hora de entrada (hh:mm) -->");
+        horaEntrada = sc.next();
+        registro[indexRegistro] = new Registro(veiculoEntrado, horaEntrada);
+        indexRegistro++;
+
     }
 
     private static Veiculo pesquisar(){
