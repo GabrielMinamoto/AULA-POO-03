@@ -1,7 +1,6 @@
 package AULA07_exercicioGeral;
 
-import java.time.Duration;
-import java.time.LocalTime;
+
 import java.util.Scanner;
 
 public class Main {
@@ -28,11 +27,24 @@ public class Main {
                 case 1 -> entrada();
                 case 2 -> saida();
                 case 3 -> estacionados();
-//            case 4 -> receita();
+                case 4 -> receita();
                 case 5 -> System.out.println("Até logo!");
                 default -> System.out.println("Valor invalido!");
             }
+            System.out.println();
         } while (opcao != 5);
+    }
+
+    private static void receita() {
+        double valor = 0;
+
+        for (int i = 0; i < indexRegistro; i++) {
+            if (registro[i].horaSaida != null){
+                valor += registro[i].calcularValor();
+            }
+        }
+        System.out.println("Receita total --> R$" + valor);
+
     }
 
     private static void saida() {
@@ -48,9 +60,6 @@ public class Main {
             registroEncontrado.horaSaida = horaSaida;
             valor = registroEncontrado.calcularValor();
             System.out.println("Valor a pagar é de --> R$ " + valor);
-
-
-
         }
 
     }
