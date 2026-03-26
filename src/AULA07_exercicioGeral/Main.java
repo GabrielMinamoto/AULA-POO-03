@@ -1,5 +1,7 @@
 package AULA07_exercicioGeral;
 
+import java.time.Duration;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Main {
@@ -24,7 +26,7 @@ public class Main {
 
             switch (opcao){
                 case 1 -> entrada();
-//                case 2 -> saida();
+                case 2 -> saida();
                 case 3 -> estacionados();
 //            case 4 -> receita();
                 case 5 -> System.out.println("Até logo!");
@@ -33,10 +35,47 @@ public class Main {
         } while (opcao != 5);
     }
 
+    private static void saida() {
+
+        Registro registroEncontrado = pesquisarRegistro();
+
+        String horaSaida;
+        double valor;
+
+        if (registroEncontrado != null){
+            System.out.println("Digite a hora de saida (hh:mm) -->");
+            horaSaida = sc.next();
+            registroEncontrado.horaSaida = horaSaida;
+            valor = registroEncontrado.calcularValor();
+            System.out.println("Valor a pagar é de --> R$ " + valor);
+
+
+
+        }
+
+    }
+
+    private static Registro pesquisarRegistro(){
+        String placa;
+        System.out.print("Qual placa da buscar? -> ");
+        placa = sc.next().toUpperCase();
+        for (int i = 0; i < indexRegistro; i++) {
+            if (registro[i].veiculo.placa.equalsIgnoreCase(placa)){
+                return registro[i];
+            }
+        }
+        System.out.println("Placa não encontrada");
+        return null;
+
+    }
+
     private static void estacionados() {
 
         for (int i = 0; i < indexRegistro; i++) {
-            System.out.println(registro[i].veiculo.placa);
+            if (registro[i].horaSaida == null){
+                System.out.println(registro[i].veiculo.placa);
+            }
+
         }
     }
 
@@ -48,9 +87,9 @@ public class Main {
         long cpf;
         String horaEntrada;
 
-        Veiculo veiculoEntrado = pesquisar();
+        Veiculo veiculoEncontrado = pesquisar();
 
-        if (veiculoEntrado == null){
+        if (veiculoEncontrado == null){
             System.out.println("Nome do proprietario: ");
             nome =sc.next();
             System.out.println("CPF do proprietario: ");
@@ -62,11 +101,13 @@ public class Main {
             System.out.println("Modelo --> ");
             modelo = sc.next();
             Proprietario proprietario = new Proprietario(nome, cpf);
-            veiculos[indexVeiculos++] = new Veiculo(marca, modelo, placa, proprietario);
+            veiculoEncontrado = new Veiculo(marca, modelo, placa, proprietario);
+            veiculos[indexVeiculos] = veiculoEncontrado;
+            indexVeiculos++;
         }
         System.out.println("Hora de entrada (hh:mm) -->");
         horaEntrada = sc.next();
-        registro[indexRegistro] = new Registro(veiculoEntrado, horaEntrada);
+        registro[indexRegistro] = new Registro(veiculoEncontrado, horaEntrada);
         indexRegistro++;
 
     }
