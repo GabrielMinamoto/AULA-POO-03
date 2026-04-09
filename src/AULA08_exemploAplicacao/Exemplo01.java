@@ -13,7 +13,7 @@ public class Exemplo01 {
 //        showMessageDialog(null, "OLA");
 //        showInputDialog("Digite seu nome: ");
 //        showConfirmDialog(null, "Presença confirmada?");
-
+// teste
         int valor1, valor2, resultado;
 //        showInputDialog("Digite o valor: ") -> retorna string
 //        para converter o input para inteiro -> Integer (classe do inteiro) + . + parseInt()
