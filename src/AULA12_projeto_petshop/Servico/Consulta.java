@@ -1,7 +1,6 @@
-package AULA12_projeto_petshop.Consulta;
+package AULA12_projeto_petshop.Servico;
 
 import AULA12_projeto_petshop.Animal.Animal;
-import AULA12_projeto_petshop.Servico.Servico;
 
 public class Consulta extends Servico {
 

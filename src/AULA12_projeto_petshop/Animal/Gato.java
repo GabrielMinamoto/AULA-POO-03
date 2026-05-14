@@ -1,6 +1,4 @@
-package AULA12_projeto_petshop.Gato;
-
-import AULA12_projeto_petshop.Animal.Animal;
+package AULA12_projeto_petshop.Animal;
 
 public class Gato extends Animal {
     private char pelagem;

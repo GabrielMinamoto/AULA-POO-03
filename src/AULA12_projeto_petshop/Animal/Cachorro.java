@@ -1,6 +1,4 @@
-package AULA12_projeto_petshop.Cachorro;
-
-import AULA12_projeto_petshop.Animal.Animal;
+package AULA12_projeto_petshop.Animal;
 
 public class Cachorro extends Animal {
 
